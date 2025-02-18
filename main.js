@@ -4,4 +4,4 @@ document.write('hi')
 
 console.log('hi')
 
-window.alert('it Me zaka')
+// window.alert('it Me zaka')
