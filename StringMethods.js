@@ -14,8 +14,6 @@ console.log(MyName[0]);
 
 console.log(MyName.charCodeAt(0));
 
-console.log(MyName.substring(2, 5));
-
 console.log(MyName.includes('Zakaria'));
 
 console.log(MyName.toUpperCase());
@@ -28,6 +26,14 @@ console.log(hhh.split(' '));
 
 console.log(hhh.replace('lorem', 'Zakaria'));
 
+console.log(hhh.trim());
+
 console.log(hhh.slice(0, 5));
 
-console.log(hhh.trim());
+console.log(hhh.substr(0, 5));
+
+console.log(hhh.substring(0, 5));
+
+console.log(hhh.startsWith('lorem'));
+
+console.log(hhh.endsWith('elit.'));
