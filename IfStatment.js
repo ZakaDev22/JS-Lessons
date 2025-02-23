@@ -1,8 +1,8 @@
 // Example 1: Simple if statement
-let age = 18;
-if (age >= 18) {
-    console.log("You are an adult.");
-}
+// let age = 18;
+// if (age >= 18) {
+//     console.log("You are an adult.");
+// }
 
 // Example 2: if-else statement
 let score = 75;
