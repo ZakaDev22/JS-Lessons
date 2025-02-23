@@ -48,3 +48,20 @@ for (let car of cars) {
         console.log(`Car: ${car}, Color: ${color}`);
     }
 }
+// Break example
+console.log("Break example:");
+for (let i = 0; i < 10; i++) {
+    if (i === 5) {
+        break;
+    }
+    console.log(`Iteration: ${i}`);
+}
+
+// Continue example
+console.log("Continue example:");
+for (let i = 0; i < 10; i++) {
+    if (i % 2 === 0) {
+        continue;
+    }
+    console.log(`Iteration: ${i}`);
+}
