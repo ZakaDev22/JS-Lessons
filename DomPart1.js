@@ -23,3 +23,15 @@ document.body.insertBefore(header, newParagraph);
 // Remove an element from the page
 let elementToRemove = document.getElementById('koko');
 elementToRemove.parentNode.removeChild(elementToRemove);
+
+document.write("<p>Paragraph 2 has been removed from the page.</p>");
+
+document.write("<p>End of DomPart1.js</p>");
+
+document.querySelectorAll('p').forEach((p) => {
+
+    p.style.backgroundColor = '#ff3';
+    p.style.color = '#E1E';
+    p.style.fontWeight = 'bold';
+    p.style.fontSize = '20px';
+});
