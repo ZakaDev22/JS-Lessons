@@ -15,3 +15,26 @@ mad.addEventListener('input', () => {
     document.getElementById('usd').value = Value;
 });
 
+
+usd.addEventListener('mouseout', () => {
+   
+    if (usd.value === '') {
+        usd.style.border = '2px solid red';
+    }
+    else
+    {
+        usd.style.border = '2px solid green';
+    }
+});
+
+
+mad.addEventListener('mouseout', () => {
+    
+     if (mad.value === '') {
+          mad.style.border = '2px solid red';
+     }
+     else
+     {
+          mad.style.border = '2px solid green';
+     }
+});

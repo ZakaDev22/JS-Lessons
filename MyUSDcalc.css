@@ -1,6 +1,6 @@
 
 body {
-    background-color: #f0f0f0;
+    background-color: #000b9fd3;
     font-family: Arial, sans-serif;
 
     display: flex    ;
@@ -17,6 +17,11 @@ body {
     width: 80vw;
     height: 80vh;
     background-color: aqua;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #eee,
+                -5px -5px 5px #eee,
+                5px -5px 5px #eee,
+                -5px 5px 5px #eee;
 }
 
 section {
@@ -29,6 +34,15 @@ section {
     background-color: cadetblue;
 }
 
+label {
+    font-size: 2em;
+    font-weight: 900;
+    margin: 10px;
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.741), rgba(255, 255, 0, 0.716));
+    border-radius: 8px;
+}
+
+
 input {
     width: 80%;
     height: 50px;
@@ -36,4 +50,6 @@ input {
     padding: 10px;
     font-size: 1.5em;
     text-align: flex-end;
+    border-radius: 8px;
+    border: 2px solid #000;
 }
