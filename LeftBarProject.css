@@ -1,0 +1,41 @@
+
+body {
+    background-color: #000b9f72;
+    font-family: Arial, sans-serif;
+}
+
+.left-bar {
+    height:70vh;
+    width: 20vw;
+    background-color: burlywood;
+}
+.left-bar ul {
+    list-style: none;
+    padding: 2px;
+   
+}
+.left-bar ul li {
+    padding: 0;
+    margin: 10px;
+   
+}
+.left-bar ul li a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5em;
+    font-weight: 900;
+
+   
+}
+.left-bar ul li a:hover , #toggle:hover {
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    
+}
+
+.hide {
+    display: none;
+}
