@@ -9,21 +9,6 @@
 <body>
     <h1  class="animate__animated animate__bounce">Old HTTP Request</h1>
 
-    <script>
-        let request = new XMLHttpRequest();
-        request.open('GET', 'https://jsonplaceholder.typicode.com/posts', true);
-        request.send();
-        request.onload = function() {
-            if (this.status >= 200 && this.status < 300) {
-                let data = JSON.parse(this.responseText);
-                console.log(data);
-            } else {
-                console.error('Request failed with status:', this.status);
-            }
-        };
-        request.onerror = function() {
-            console.error('Request failed');
-        };
-    </script>
+    <script src="ApiPractice.js"></script>
 </body>
 </html>
