@@ -18,7 +18,27 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+}
+#container #data-container div {
+    width: 100%;
+    height: 100%;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff34;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    padding: 3px;
+    transition: all 0.5s ease;
+    margin: 5px;
+}
+#container #data-container div:hover {
+    z-index: 100;
+    color: white;
+    background: linear-gradient(to right, #0004ff8e, #ff5e00a6);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
 }
 
 #users-list {
