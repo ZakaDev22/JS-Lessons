@@ -10,8 +10,9 @@ const Datacontainer = document.getElementById('data-container');
     request2.onload = function () {
         if (this.status >= 200 && this.status < 300) {
             let data = this.response; // No need to parse, it's already JSON
+            Datacontainer.innerHTML = ''; // Clear the data container before adding new posts
             data.forEach(post => {
-                console.log(post);
+                AddNewPostToTheDataContainer(post); // Add new post to the data container
             });
         } else {
             console.error('Request failed with status:', this.status);
@@ -20,6 +21,20 @@ const Datacontainer = document.getElementById('data-container');
     request2.onerror = function () {
         console.error('Request failed');
     };
+}
+
+function AddNewPostToTheDataContainer(post) {
+ let div = document.createElement('div');
+ let title = document.createElement('h5');
+    let body = document.createElement('p');
+
+    title.innerText = post.title;
+    body.innerText = post.body;
+    div.appendChild(title);
+    div.appendChild(document.createElement('hr'));
+    div.appendChild(body);
+
+    Datacontainer.appendChild(div);
 }
 
  function GetAllListUsers() {
