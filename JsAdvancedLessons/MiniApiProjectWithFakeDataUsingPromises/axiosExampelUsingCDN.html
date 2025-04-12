@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../MiniApiProjectWithFakeData/apiProject.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="container">
+        <section id="users-list">
+            <ul>
+    
+            </ul>
+        </section>
+        <section id="data-container">
+    
+        </section>
+    </div>
+
+    <script>
+        const Datacontainer = document.getElementById('data-container');
+            const ListContainer = document.querySelector('#users-list ul');
+
+    
+             // Function to fetch posts by user ID
+                function GetAllPostsByUserIDUsingAxios(userID) {
+                    // Make a request for a user with a given ID
+                    axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
+                        .then(function (response) {
+
+                            let data = response.data; // Get the data from the response
+                           Datacontainer.innerHTML = ''; // Clear the data container before adding new posts
+                            data.forEach(post => {
+                                AddNewPostToTheDataContainer(post); // Add new post to the data container
+                            });
+                        })
+                        .catch(function (error) {
+                            // handle error
+                            throw new Error(`Request failed with status: ${response.status}`);
+                        })
+                     
+                        
+                }
+
+            // Function to add a new post to the data container
+            function AddNewPostToTheDataContainer(post) {
+                let div = document.createElement('div');
+                let title = document.createElement('h5');
+                let body = document.createElement('p');
+
+                title.innerText = post.title;
+                body.innerText = post.body;
+                div.appendChild(title);
+                div.appendChild(document.createElement('hr'));
+                div.appendChild(body);
+
+                Datacontainer.appendChild(div);
+            }
+
+            // Function to fetch all users
+            function GetAllListUsers() {
+                axios.get(`https://jsonplaceholder.typicode.com/users`)
+                    .then(response => {
+                       let data = response.data; // Get the data from the response
+                        ListContainer.innerHTML = ''; // Clear the list before adding new users
+                        data.forEach(user => {
+                            FillTheListItemWithUserNameAndEmail(user); // Fill the list with user name and email
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching users:', error);
+                    });
+            }
+
+            // Function to fill the list with user name and email
+            function FillTheListItemWithUserNameAndEmail(user) {
+                let user_element = document.createElement('li');
+                let user_name = document.createElement('h5');
+                user_name.innerText = user.name;
+                let user_email = document.createElement('small');
+                user_email.innerText = user.email;
+
+                user_element.appendChild(user_name);
+                user_element.appendChild(user_email);
+
+                // Fetch posts for the clicked user
+                user_element.addEventListener('click', () => {
+                    GetAllPostsByUserIDUsingAxios(user.id);
+                });
+
+                ListContainer.appendChild(user_element);
+            }
+
+          
+
+            // Fetch all users when the page loads
+            document.addEventListener('DOMContentLoaded', function () {
+                GetAllListUsers();
+            });
+    </script>
+</body>
+</html>
