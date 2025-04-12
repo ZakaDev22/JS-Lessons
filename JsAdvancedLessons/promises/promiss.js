@@ -36,6 +36,7 @@ const chainExample = new Promise((resolve, reject) => {
     resolve(10);
 });
 
+console.log("Chaining promises:");
 chainExample
     .then(value => {
         console.log("First value:", value);
@@ -51,3 +52,23 @@ chainExample
     .catch(error => {
         console.error(error);
     });
+
+    console.log("Chaining promises with async operation:");
+    const asyncChainExample = new Promise((resolve, reject) => {
+      resolve(10);
+    }); 
+
+    asyncChainExample
+      .then((value) => {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(value * 2), 1000); // Simulate async operation
+        });
+      })
+      .then((value) => {
+        console.log("After async operation:", value); // Logs: After async operation: 20
+        return value * 3;
+      })
+      .then((value) => {
+        console.log("Final value:", value); // Logs: Final value: 60
+      })
+      .catch((error) => console.error(error));
