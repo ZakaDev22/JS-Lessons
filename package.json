@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ZakaDev22/JS-Practices/issues"
   },
-  "homepage": "https://github.com/ZakaDev22/JS-Practices#readme"
+  "homepage": "https://github.com/ZakaDev22/JS-Practices#readme",
+  "dependencies": {
+    "axios": "^1.8.4"
+  }
 }
