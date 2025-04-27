@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Authentication with Axios</h1>
+    <div>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Fetch Protected Data</h2>
+        <button id="fetchData">Get Data</button>
+        <pre id="dataOutput"></pre>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const apiUrl = 'https://example.com/api'; 
+        let authToken = '';
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await axios.post(`${apiUrl}/login`, { username, password });
+                authToken = response.data.token; // Assuming the token is returned in the response
+                alert('Login successful! Token received.');
+            } catch (error) {
+                console.error('Login failed:', error);
+                alert('Login failed. Please check your credentials.');
+            }
+        });
+
+        // Fetch protected data
+        document.getElementById('fetchData').addEventListener('click', async () => {
+            if (!authToken) {
+                alert('Please login first.');
+                return;
+            }
+
+            try {
+                const response = await axios.get(`${apiUrl}/protected-data`, {
+                    headers: { Authorization: `Bearer ${authToken}` }
+                });
+                document.getElementById('dataOutput').textContent = JSON.stringify(response.data, null, 2);
+            } catch (error) {
+                console.error('Failed to fetch data:', error);
+                alert('Failed to fetch protected data.');
+            }
+        });
+    </script>
+</body>
+</html>
