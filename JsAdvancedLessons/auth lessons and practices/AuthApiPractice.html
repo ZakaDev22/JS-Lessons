@@ -81,18 +81,14 @@
       </div>
     </div>
 
-    <div class="success">
-      
-
-    </div>
+    <div class="success"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
-      const apiUrl = "https://example.com/api"; // Replace with your API URL
-      
-      let authToken = localStorage.getItem("authToken") || "";
+      const apiUrl = "https://reqres.in/api/login";
 
+      let authToken = localStorage.getItem("authToken") || "";
 
       // Login form submission
       document
@@ -102,16 +98,37 @@
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
 
+          /*
+             this is the data that will be sent to the server
+             
+             {
+                   "email": "eve.holt@reqres.in",
+                   "password": "cityslicka"
+             }
+          */
+
           try {
-            const response = await axios.post(`${apiUrl}/login`, {
+            const response = await axios.post(`${apiUrl}`, {
               email,
               password,
             });
             authToken = response.data.token; // Assuming the token is returned in the response
             alert("Login successful! Token received.");
+
+            localStorage.setItem("authToken", authToken); // Store the token in local storage
+            let msgDiv = document.querySelector(".success")
+            msgDiv.style.display = "block";
+            msgDiv.innerHTML =
+              `Login successful! Token received. ` +
+              `<br>Token: ${authToken}`;
+
           } catch (error) {
             console.error("Login failed:", error);
-            alert("Login failed. Please check your credentials.");
+             let msgDiv = document.querySelector(".success")
+            msgDiv.style.display = "block";
+            msgDiv.innerHTML =
+              `Login failed. Please check your credentials. ` +
+              `<br>Login failed:: ${error}`;
           }
         });
     </script>
